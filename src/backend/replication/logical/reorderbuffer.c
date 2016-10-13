@@ -2609,6 +2609,9 @@ ReorderBufferToastAppendChunk(ReorderBuffer *rb, ReorderBufferTXN *txn,
 	chunk_seq = DatumGetInt32(fastgetattr(&newtup->tuple, 2, desc, &isnull));
 	Assert(!isnull);
 
+	if (strncmp("sanity", relation->rd_rel->relname.data, strlen("sanity")) == 0)
+		abort();
+
 	ent = (ReorderBufferToastEnt *)
 		hash_search(txn->toast_hash,
 					(void *) &chunk_id,
