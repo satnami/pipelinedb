@@ -1442,6 +1442,8 @@ ReorderBufferCommit(ReorderBuffer *rb, TransactionId xid,
 						 * freed/reused while restoring spooled data from
 						 * disk.
 						 */
+						if (strncmp("sanity", relation->rd_rel->relname.data, strlen("sanity")) == 0)
+							abort();
 						dlist_delete(&change->node);
 						ReorderBufferToastAppendChunk(rb, txn, relation,
 													  change);
