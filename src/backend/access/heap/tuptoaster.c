@@ -1939,10 +1939,13 @@ toast_fetch_datum(struct varlena * attr)
 	 * Final checks that we successfully fetched the datum
 	 */
 	if (nextidx != numchunks)
+	{
+		abort();
 		elog(ERROR, "missing chunk number %d for toast value %u in %s",
 			 nextidx,
 			 toast_pointer.va_valueid,
 			 RelationGetRelationName(toastrel));
+	}
 
 	/*
 	 * End scan and close relations
@@ -2171,10 +2174,13 @@ toast_fetch_datum_slice(struct varlena * attr, int32 sliceoffset, int32 length)
 	 * Final checks that we successfully fetched the datum
 	 */
 	if (nextidx != (endchunk + 1))
+	{
+		abort();
 		elog(ERROR, "missing chunk number %d for toast value %u in %s",
 			 nextidx,
 			 toast_pointer.va_valueid,
 			 RelationGetRelationName(toastrel));
+	}
 
 	/*
 	 * End scan and close relations
