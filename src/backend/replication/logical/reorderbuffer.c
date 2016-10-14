@@ -2687,8 +2687,6 @@ ReorderBufferToastReplace(ReorderBuffer *rb, ReorderBufferTXN *txn,
 	desc = RelationGetDescr(relation);
 
 	toast_rel = RelationIdGetRelation(relation->rd_rel->reltoastrelid);
-	if (toast_rel == NULL)
-		return;
 	toast_desc = RelationGetDescr(toast_rel);
 
 	/* should we allocate from stack instead? */
