@@ -1940,7 +1940,7 @@ toast_fetch_datum(struct varlena * attr)
 	 */
 	if (nextidx != numchunks)
 	{
-		abort();
+//		abort();
 		elog(ERROR, "missing chunk number %d for toast value %u in %s",
 			 nextidx,
 			 toast_pointer.va_valueid,
@@ -2175,7 +2175,7 @@ toast_fetch_datum_slice(struct varlena * attr, int32 sliceoffset, int32 length)
 	 */
 	if (nextidx != (endchunk + 1))
 	{
-		abort();
+//		abort();
 		elog(ERROR, "missing chunk number %d for toast value %u in %s",
 			 nextidx,
 			 toast_pointer.va_valueid,
