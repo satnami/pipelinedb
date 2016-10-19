@@ -2931,7 +2931,6 @@ ParseCombineFuncCall(ParseState *pstate, List *fargs,
 	cont_qry = GetContViewQuery(rv);
 
 	rte = (RangeTblEntry *) list_nth(pstate->p_rtable, var->varno - 1);
-	cvatt = var->varattno;
 
 	/*
 	 * If this is a join, our varattno will point to the position of the target
